@@ -9,7 +9,8 @@ public class Main {
         Book dogsHeart = new Book("Dogs Heart", 1920, mikhailBulgakov);
         System.out.println(dogsHeart);
 
-
+        System.out.println(Book.hashCode() == Book2.hashCode());
+        System.out.println(Book.equals(Book2));
 
     }
 }

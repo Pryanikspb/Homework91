@@ -1,8 +1,9 @@
+import java.util.Objects;
+
 public class Book {
     private String title;
     private int publishDate;
     private Author author;
-    private Book id;
 
     public Book(String title, int publishDate, Author author) {
         this.title = title;
@@ -36,22 +37,24 @@ public class Book {
     }
 
     @Override
-    public String toString() {
-        return "Книга - " + title + ", год публикации " + publishDate +
-                ", " + author;
-    }
-
-    @Override
-    public boolean equals(Object other) {
-        if (this.getClass() != other.getClass()) {
-            return false;
-        }
-        Book title = (Book) other;
-        return id.equals(title.id);
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Book)) return false;
+        Book book = (Book) o;
+        return publishDate == book.publishDate && title.equals(book.title) && author.equals(book.author);
     }
 
     @Override
     public int hashCode() {
-        return java.util.Objects.hash(id);
+        return Objects.hash(title, publishDate, author);
+    }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "title='" + title + '\'' +
+                ", publishDate=" + publishDate +
+                ", author=" + author +
+                '}';
     }
 }
