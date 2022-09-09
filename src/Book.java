@@ -2,6 +2,7 @@ public class Book {
     private String title;
     private int publishDate;
     private Author author;
+    private Book id;
 
     public Book(String title, int publishDate, Author author) {
         this.title = title;
@@ -38,5 +39,19 @@ public class Book {
     public String toString() {
         return "Книга - " + title + ", год публикации " + publishDate +
                 ", " + author;
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        if (this.getClass() != other.getClass()) {
+            return false;
+        }
+        Book title = (Book) other;
+        return id.equals(title.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return java.util.Objects.hash(id);
     }
 }
